@@ -1,4 +1,4 @@
-const Counter = function(config, callback) {
+export default Counter = function(config, callback) {
 
     let self = this;
 
@@ -79,4 +79,7 @@ const Counter = function(config, callback) {
     
     self.target = self.validateTarget();
     self.value = self.setInitialValue();
-}   
+}
+
+module = {};
+module.exports = Counter;   
