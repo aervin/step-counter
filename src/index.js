@@ -1,4 +1,4 @@
-export default Counter = function(config, callback) {
+const Counter = function(config, callback) {
 
     let self = this;
 
@@ -10,7 +10,7 @@ export default Counter = function(config, callback) {
      * Check if callback function exists; fire 
      * if so.
      */
-    self.fireCallback = function() {
+    self.fireCallback = () => {
         if(self.callback && typeof self.callback === 'function') {
             self.callback();
         }
@@ -19,7 +19,7 @@ export default Counter = function(config, callback) {
     /**
      * Final checks and initialization.
      */
-    self.init = function() {
+    self.init = () => {
         setTimeout(function() {
             if(self.config && self.config.startingValue < self.config.endingValue) {
                 self.intervalId = setInterval(self.writeValueToTarget, 1);
@@ -31,7 +31,7 @@ export default Counter = function(config, callback) {
     /**
      * Set the counter's initial value.
      */
-    self.setInitialValue = function() {
+    self.setInitialValue = () => {
       if((self.config.endingValue - self.config.startingValue) >= (self.config.threshold || 251)) {
           return self.config.endingValue - 250;
       }
@@ -42,7 +42,7 @@ export default Counter = function(config, callback) {
      * Make sure queryselectorall() returns
      * exactly one element. 
      */
-    self.validateTarget = function() {
+    self.validateTarget = () => {
         if(self.config.selector && typeof self.config.selector === 'string') {
             const elementList = document.querySelectorAll(self.config.selector);
             switch(elementList.length) {
@@ -61,7 +61,7 @@ export default Counter = function(config, callback) {
      * Write new value to target element's 
      * inner HTML.
      */
-    self.writeValueToTarget = function() {
+    self.writeValueToTarget = () => {
         const diff = self.config.endingValue - self.value;
         if(diff >= 1) {
             self.value++;
@@ -79,7 +79,4 @@ export default Counter = function(config, callback) {
     
     self.target = self.validateTarget();
     self.value = self.setInitialValue();
-}
-
-module = {};
-module.exports = Counter;   
+} 
