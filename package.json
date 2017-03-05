@@ -1,0 +1,11 @@
+{
+  "name": "step-counter",
+  "version": "0.1.0",
+  "description": "A simple lil step counter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aaron Ervin <aervin@uste3.com>",
+  "license": "ISC"
+}
