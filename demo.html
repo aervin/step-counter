@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+    <head>
+
+    </head>
+
+    <body>
+
+        <h1>Counter demo:</h1>
+        <h2 id="TARGET">0</h2>
+
+        <script src="./index.js"></script>
+        <script>
+            window.addEventListener("load", function() {
+                const config = {
+                    startingValue: 0,
+                    endingValue: 200,
+                    selector: '#TARGET',
+                    delay: 1000   
+                }
+                const counter = new Counter(config, function() {
+                    console.log('Counter finished!');
+                });
+                counter.init();
+            });
+        </script>
+    </body>

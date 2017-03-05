@@ -3,15 +3,14 @@ const Counter = function(config, callback) {
     let self = this;
 
     self.config = config;
+    self.config.delay = self.config.delay || 0;
     self.callback = callback || null;
-    self.target = self.validateTarget();
-    self.value = self.setInitialValue();
 
     /**
      * Check if callback function exists; fire 
      * if so.
      */
-    self.fireCallback() {
+    self.fireCallback = function() {
         if(self.callback && typeof self.callback === 'function') {
             self.callback();
         }
@@ -21,11 +20,12 @@ const Counter = function(config, callback) {
      * Final checks and initialization.
      */
     self.init = function() {
-        if(self.config && self.config.startingValue < self.config.endingValue) {
-            setInterval(self.writeValueToTarget, 1);
-            return;
-        }
-        throw Error('A Counter\'s starting value must be lower than its ending value.');
+        setTimeout(function() {
+            if(self.config && self.config.startingValue < self.config.endingValue) {
+                self.intervalId = setInterval(self.writeValueToTarget, 1);
+                return;
+            }
+        }, self.config.delay);
     }
 
     /**
@@ -76,6 +76,7 @@ const Counter = function(config, callback) {
         window.clearInterval(self.intervalId);
         self.fireCallback();
     }
-}
-
-module.exports = Counter; 
+    
+    self.target = self.validateTarget();
+    self.value = self.setInitialValue();
+}   
