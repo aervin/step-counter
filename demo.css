@@ -1,0 +1,81 @@
+@media (min-width: 0px) {
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 67.5%;
+        height: 100%;
+    }
+    body {
+        background: rgb(12, 23, 29);
+        height: 100%;
+        padding: 112px 48px 0;
+    }
+    button {
+        background: rgba(255, 255, 255, .7);
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+        margin: 0 auto 48px;
+        opacity: .9;
+        padding: 12px;
+        width: 152px;
+    }
+
+    button:hover {
+        opacity: 1;
+    }
+
+    button:active {
+        opacity: .5;
+    }
+
+    .card {
+        border-radius: 2px;
+        display: flex;
+        flex-direction: column;
+        margin: 48px 8px 16px;
+        opacity: 0;
+        overflow: hidden;
+        transition: all .25s cubic-bezier(0.52, 0.38, 0.38, 1.54);
+        width: calc(33.33% - 16px);
+    }
+    .card-2 {
+        margin: 0 8px 16px;
+        width: calc(66.66% - 16px);
+    }
+
+    h2 {
+        background: rgb(48, 55, 59);
+        color: rgba(255, 255, 255, .8);
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 112px;
+        text-align: center;
+    }
+    h3 {
+        background: rgb(48, 55, 59);
+        border-top: 1px solid rgba(255, 255, 255, .1);
+        color: rgba(255, 255, 255, .45);
+        font-weight: 400;
+        line-height: 32px;
+        overflow: hidden;
+        padding: 0 8px;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+    .__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        max-width: 620px;
+    }
+}

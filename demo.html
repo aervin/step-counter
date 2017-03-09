@@ -1,27 +1,104 @@
 <!DOCTYPE html>
 
-    <head>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <link href="./demo.css" rel="stylesheet">
+</head>
 
-    </head>
+<body>
+    <button onclick="window.initAnimation()">Reset</button>
+    <div class="__wrapper">
+        <div class="card" id="CARD">
+            <h2 id="TARGET">0</h2>
+            <h3>Heading one</h3>
+        </div>
+        <div class="card" id="CARD">
+            <h2 id="TARGET2">$000</h2>
+            <h3>Heading two</h3>
+        </div>
+        <div class="card" id="CARD">
+            <h2 id="TARGET3">0</h2>
+            <h3>Heading three</h3>
+        </div>
 
-    <body>
+        <div class="card card-2" id="CARD">
+            <h2>Some data</h2>
+            <h3 style="text-align: left;">Heading four</h3>
+        </div>
 
-        <h1>Counter demo:</h1>
-        <h2 id="TARGET">0</h2>
+        <div class="card" id="CARD">
+            <h2 id="TARGET5">0</h2>
+            <h3>Heading five</h3>
+        </div>
+    </div>
 
-        <script src="./lib/index.js"></script>
-        <script>
-            window.addEventListener("load", function() {
-                const config = {
-                    startingValue: 0,
-                    endingValue: 200,
-                    selector: '#TARGET',
-                    delay: 1000   
+    <script src="./lib/index.js"></script>
+    <script src="./animatr.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            const init = function () {
+                let cards = document.querySelectorAll('#CARD');
+                for (let card of cards) {
+                    card.style.margin = '48px 8px 16px';
+                    card.style.opacity = '0';
                 }
-                const counter = new Counter(config, function() {
-                    console.log('Counter finished!');
-                });
-                counter.init();
-            });
-        </script>
-    </body>
+
+                setTimeout(function () {
+                    const config = {
+                        startingValue: 0,
+                        endingValue: 250,
+                        selector: '#TARGET',
+                        delay: 0
+                    };
+                    const config2 = {
+                        startingValue: 150,
+                        endingValue: 512,
+                        selector: '#TARGET2',
+                        delay: 200,
+                        dollar: true
+                    };
+                    const config3 = {
+                        startingValue: 0,
+                        endingValue: 414,
+                        selector: '#TARGET3',
+                        delay: 400
+                    };
+                    const config5 = {
+                        startingValue: 0,
+                        endingValue: 1467,
+                        selector: '#TARGET5',
+                        delay: 0
+                    };
+
+                    const counter = new Counter(config, function () { });
+                    const counter2 = new Counter(config2, function () { });
+                    const counter3 = new Counter(config3, function () { });
+                    const counter5 = new Counter(config5, function () { });
+
+                    counter.init();
+                    counter2.init();
+                    counter3.init();
+                    counter5.init();
+
+                    const aConfig = {
+                        target: '#CARD',
+                        animations: [
+                            {
+                                opacity: '1'
+                            },
+                            {
+                                margin: '0 8px 16px'
+                            }
+                        ],
+                        chainDelay: 100
+                    };
+                    const card = new Animatr(aConfig);
+                    card.init();
+                }, 450);
+            }
+
+            init();
+            window.initAnimation = init;
+        });
+    </script>
+</body>
